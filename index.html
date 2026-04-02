@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sabia — Citas que inspiran</title>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0F0F1A;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #6C63FF 0%, #4845B0 50%, #0F0F1A 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '"';
+      position: absolute;
+      font-size: 600px;
+      color: rgba(255,255,255,0.03);
+      font-family: 'Crimson Pro', serif;
+      top: -100px;
+      left: -50px;
+      line-height: 1;
+    }
+
+    .hero-content { position: relative; z-index: 1; max-width: 700px; }
+
+    .app-icon {
+      width: 120px;
+      height: 120px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 32px;
+      font-size: 60px;
+      border: 2px solid rgba(255,255,255,0.2);
+    }
+
+    .hero h1 {
+      font-family: 'Crimson Pro', serif;
+      font-size: 72px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      color: rgba(255,255,255,0.8);
+      font-style: italic;
+      font-family: 'Crimson Pro', serif;
+      margin-bottom: 48px;
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #fff;
+      color: #6C63FF;
+      padding: 16px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .download-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    }
+
+    .download-btn svg { width: 24px; height: 24px; }
+
+    /* Stats */
+    .stats {
+      background: #16162A;
+      padding: 60px 20px;
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+
+    .stat { text-align: center; }
+
+    .stat-number {
+      font-family: 'Crimson Pro', serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: #6C63FF;
+    }
+
+    .stat-label {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      margin-top: 4px;
+    }
+
+    /* Features */
+    .features {
+      padding: 80px 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: 'Crimson Pro', serif;
+      font-size: 42px;
+      text-align: center;
+      margin-bottom: 60px;
+      color: #fff;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .feature-card {
+      background: #16162A;
+      border-radius: 20px;
+      padding: 32px;
+      border: 1px solid rgba(108,99,255,0.2);
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(108,99,255,0.5);
+    }
+
+    .feature-emoji { font-size: 36px; margin-bottom: 16px; }
+
+    .feature-title {
+      font-family: 'Crimson Pro', serif;
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    .feature-desc {
+      font-size: 15px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.6;
+    }
+
+    /* Quote section */
+    .quote-section {
+      background: linear-gradient(135deg, #6C63FF, #4845B0);
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .quote-text {
+      font-family: 'Crimson Pro', serif;
+      font-size: 32px;
+      font-style: italic;
+      max-width: 700px;
+      margin: 0 auto 24px;
+      line-height: 1.6;
+    }
+
+    .quote-author {
+      font-size: 16px;
+      color: rgba(255,255,255,0.8);
+      font-weight: 600;
+    }
+
+    /* Authors */
+    .authors {
+      padding: 80px 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .authors-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .author-tag {
+      background: #16162A;
+      border: 1px solid rgba(108,99,255,0.3);
+      color: rgba(255,255,255,0.8);
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-size: 14px;
+    }
+
+    /* CTA */
+    .cta {
+      background: #16162A;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-family: 'Crimson Pro', serif;
+      font-size: 42px;
+      margin-bottom: 16px;
+    }
+
+    .cta p {
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 40px;
+      font-size: 18px;
+    }
+
+    /* Footer */
+    footer {
+      background: #0A0A15;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: #6C63FF; }
+
+    .footer-copy {
+      color: rgba(255,255,255,0.3);
+      font-size: 13px;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 48px; }
+      .stats { gap: 32px; }
+      .quote-text { font-size: 22px; }
+      .cta h2 { font-size: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="app-icon">📖</div>
+      <h1>Sabia</h1>
+      <p>Citas que inspiran</p>
+      <a href="#" class="download-btn" id="play-btn">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M3 20.5v-17c0-.83.94-1.3 1.6-.8l14 8.5c.6.36.6 1.24 0 1.6l-14 8.5c-.66.5-1.6.03-1.6-.8z"/>
+        </svg>
+        Descargar en Google Play
+      </a>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats">
+    <div class="stat">
+      <div class="stat-number">500+</div>
+      <div class="stat-label">Citas inspiracionales</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">50+</div>
+      <div class="stat-label">Autores famosos</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">13</div>
+      <div class="stat-label">Categorías</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">14</div>
+      <div class="stat-label">Logros desbloqueables</div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features">
+    <h2 class="section-title">Todo lo que necesitas</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-emoji">📖</div>
+        <div class="feature-title">Cita del día</div>
+        <div class="feature-desc">Cada día una nueva cita te espera para reflexionar y comenzar con inspiración.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-emoji">📅</div>
+        <div class="feature-title">Cita de la semana</div>
+        <div class="feature-desc">Una selección especial cada semana para acompañarte durante los 7 días.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-emoji">❤️</div>
+        <div class="feature-title">Favoritos</div>
+        <div class="feature-desc">Guarda las citas que más te inspiren y accede a ellas cuando quieras.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-emoji">🔍</div>
+        <div class="feature-title">Explorar</div>
+        <div class="feature-desc">Busca por autor, categoría o texto. Filtra por lo que más te inspire hoy.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-emoji">🏆</div>
+        <div class="feature-title">Logros</div>
+        <div class="feature-desc">Desbloquea medallas y logros mientras descubres más citas cada día.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-emoji">🎨</div>
+        <div class="feature-title">Personalización</div>
+        <div class="feature-desc">Elige entre 8 temas de colores y modo claro u oscuro para una experiencia única.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-emoji">📊</div>
+        <div class="feature-title">Estadísticas</div>
+        <div class="feature-desc">Descubre cuántas citas has leído, tu racha de días y tus categorías favoritas.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-emoji">📤</div>
+        <div class="feature-title">Compartir</div>
+        <div class="feature-desc">Comparte tus citas favoritas con amigos y familia en tus redes sociales.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote destacada -->
+  <section class="quote-section">
+    <div class="quote-text">"La felicidad se puede encontrar incluso en los momentos más oscuros, si uno recuerda encender la luz."</div>
+    <div class="quote-author">— Albus Dumbledore · J.K. Rowling</div>
+  </section>
+
+  <!-- Autores -->
+  <section class="authors">
+    <h2 class="section-title">Autores destacados</h2>
+    <div class="authors-list">
+      <span class="author-tag">Gandhi</span>
+      <span class="author-tag">Maya Angelou</span>
+      <span class="author-tag">Albert Einstein</span>
+      <span class="author-tag">Nelson Mandela</span>
+      <span class="author-tag">Frida Kahlo</span>
+      <span class="author-tag">Marco Aurelio</span>
+      <span class="author-tag">Paulo Coelho</span>
+      <span class="author-tag">Aristóteles</span>
+      <span class="author-tag">Oscar Wilde</span>
+      <span class="author-tag">Marie Curie</span>
+      <span class="author-tag">Salma Hayek</span>
+      <span class="author-tag">Carlos Santana</span>
+      <span class="author-tag">Guillermo del Toro</span>
+      <span class="author-tag">Dalai Lama</span>
+      <span class="author-tag">Robin Williams</span>
+      <span class="author-tag">Audrey Hepburn</span>
+      <span class="author-tag">Morgan Freeman</span>
+      <span class="author-tag">Keanu Reeves</span>
+      <span class="author-tag">Alfonso Cuarón</span>
+      <span class="author-tag">Y muchos más...</span>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Empieza a inspirarte hoy</h2>
+    <p>Descarga Sabia gratis y descubre las citas que cambiarán tu día.</p>
+    <a href="#" class="download-btn" style="background: #6C63FF; color: #fff;">
+      <svg viewBox="0 0 24 24" fill="currentColor" style="width:24px;height:24px">
+        <path d="M3 20.5v-17c0-.83.94-1.3 1.6-.8l14 8.5c.6.36.6 1.24 0 1.6l-14 8.5c-.66.5-1.6.03-1.6-.8z"/>
+      </svg>
+      Descargar gratis
+    </a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-links">
+      <a href="https://sites.google.com/view/sabiaapp/p%C3%A1gina-principal/pol%C3%ADtica-de-privacidad">Política de Privacidad</a>
+      <a href="mailto:hosekii.dev@gmail.com">Soporte</a>
+      <a href="mailto:hosekii.dev@gmail.com">Contacto</a>
+    </div>
+    <div class="footer-copy">© 2026 Hosekii Dev · Sabia — Citas que inspiran</div>
+  </footer>
+
+</body>
+</html>
